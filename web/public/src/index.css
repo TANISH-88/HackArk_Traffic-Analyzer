@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+#video {
+  filter: blur(2.2px);
+}
+
+#bg {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden; /* Blur ki wajah se edges bahar na nikle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url(../public/bg.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+
+  /* Blur settings */
+  filter: blur(4px); 
+  
+  /* Senior Tip: Scale thoda badhao taki blurred edges borders par white gaps na banayein */
+  transform: scale(1.1); 
+  
+  z-index: -1; /* Isse image content ke piche chali jayegi */
+}
+
+/* Optional: Background ko thoda aur dark karne ke liye overlay */
+#bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); /* 40% darkness */
+  z-index: -1;
+}
